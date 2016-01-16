@@ -9,10 +9,10 @@
 
 import Foundation
 
-class HamburgerMenuControllerView: UIView {
+class MenuControllerView: UIView {
     
     //MARK: Properties
-    var menu: HamburgerMenuView!
+    var menu: MenuView!
     
     //MARK: Touch
     override func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool {
@@ -20,7 +20,7 @@ class HamburgerMenuControllerView: UIView {
             return true
         }
     
-        //allow touches to pass to the HamburgerMenu
+        //allow touches to pass to the Menu
         if CGRectContainsPoint(self.menu.frame, point) {
             return true
         }

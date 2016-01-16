@@ -10,7 +10,6 @@
 
 import UIKit
 
-
 public class MenuView: UIView {
     
     //MARK: Properties
@@ -21,48 +20,45 @@ public class MenuView: UIView {
     ///The HamburgerMenuController this menu is attached to
     public var controller: MenuController!
    
-    class func addTo(rootView: UIView, menuNib: String, controller: MenuController) -> MenuView {
-        //create menu from nib
-        guard let menu = UIView.instantiateFromNib(menuNib) as? MenuView else {
-            fatalError("Menu Nib must be a subclass of `HamburgerMenu`")
-        }
+    init(rootView: UIView, controller: MenuController) {
+        self.init()
         
-        return MenuView.addTo(rootView, menuView: menu, controller: controller)
+        self.initialize(rootView, controller: controller)
     }
     
-    class func addTo(rootView: UIView, menuView menu: MenuView, controller: MenuController) -> MenuView  {
-        
+    func initialize(rootView: UIView, controller: MenuController) {
         //calculate a nice width for the menu
-        var width = rootView.frame.size.width - 69
+        var width = rootView.frame.size.width - 85
         if width > 400 {
             width = 400
         }
         
         //initialize
-        menu.width = width
-        menu.rootView = rootView
-        menu.controller = controller
-        
+        self.width = width
+        self.rootView = rootView
+        self.controller = controller
         
         //add the menu to the rootView and constrain it to hang off the left side
-        menu.rootView.addSubview(menu)
-        menu.translatesAutoresizingMaskIntoConstraints = false
+        self.rootView.addSubview(self)
+        self.translatesAutoresizingMaskIntoConstraints = false
         
         //align to edges of super view
-        menu.rootView.addConstraint(
-            NSLayoutConstraint(item: menu, attribute: .Top, relatedBy: .Equal, toItem: menu.rootView, attribute: .Top, multiplier: 1, constant: 0)
+        self.rootView.addConstraint(
+            NSLayoutConstraint(item: self, attribute: .Top, relatedBy: .Equal, toItem: self.rootView, attribute: .Top, multiplier: 1, constant: 0)
         )
-        menu.rootView.addConstraint(
-            NSLayoutConstraint(item: menu, attribute: .Trailing, relatedBy: .Equal, toItem: menu.rootView, attribute: .Leading, multiplier: 1, constant: 0)
+        self.rootView.addConstraint(
+            NSLayoutConstraint(item: self, attribute: .Trailing, relatedBy: .Equal, toItem: self.rootView, attribute: .Leading, multiplier: 1, constant: 0)
         )
-        menu.rootView.addConstraint(
-            NSLayoutConstraint(item: menu, attribute: .Bottom, relatedBy: .Equal, toItem: menu.rootView, attribute: .Bottom, multiplier: 1, constant: 0)
+        self.rootView.addConstraint(
+            NSLayoutConstraint(item: self, attribute: .Bottom, relatedBy: .Equal, toItem: self.rootView, attribute: .Bottom, multiplier: 1, constant: 0)
         )
-        menu.rootView.addConstraint(
-            NSLayoutConstraint(item: menu, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1, constant: menu.width)
+        self.rootView.addConstraint(
+            NSLayoutConstraint(item: self, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1, constant: self.width)
         )
-
-        return menu
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -73,28 +69,42 @@ public class MenuView: UIView {
         self.controller.selectedIndex = tab
         
         if self.open && shouldClose {
-            self.toggle()
+            self.toggle(true)
         }
     }
     
-    public func toggle() {
+    ///Open and close the menu and transition all HamburgerButtons. Animation is optional.
+    public func toggle(animated: Bool) {
         self.open = !self.open
         
-        
-        UIView.animateWithDuration(0.6, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: [], animations: {
-            
-            //calculate whether to open or close the menu
-            let left: CGFloat
+        for button in self.controller.buttons {
             if self.open {
-                UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: .Slide)
-                left = self.width
+                button.transitionToHamburger(false)
+                button.transitionToX(animated)
             } else {
-                UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: .Slide)
-                left = 0
+                button.transitionToX(false)
+                button.transitionToHamburger(animated)
             }
-            
-            self.rootView.transform = CGAffineTransformMakeTranslation(left, 0)
-            
-        }, completion: nil)
+        }
+        
+        if animated {
+            UIView.animateWithDuration(0.6, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: [], animations: {
+                self.toggleTransform()
+            }, completion: nil)
+        } else {
+            self.toggleTransform()
+        }
+    }
+    
+    func toggleTransform() {
+        //calculate whether to open or close the menu
+        let left: CGFloat
+        if self.open {
+            left = self.width
+        } else {
+            left = 0
+        }
+        
+        self.rootView.transform = CGAffineTransformMakeTranslation(left, 0)
     }
 }

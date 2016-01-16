@@ -77,7 +77,7 @@ Make sure to use Autolayout if you want your Hamburger Menu to behave correctly 
 
 Call `self.switchTab(_: Int, andClose: Bool)` inside of your `MenuView` subclass to change the currently selected tab. 
 
-```
+```swift
 @IBAction func buttonForTabTwoTouchUpInside(sender: UIButton) {
     self.switchToTab(1, andClose: true) //index 1 = tab #2   
 }

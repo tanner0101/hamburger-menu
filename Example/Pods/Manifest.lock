@@ -1,0 +1,19 @@
+PODS:
+  - HamburgerButton (0.1.0)
+  - HamburgerMenu (0.1.0)
+
+DEPENDENCIES:
+  - HamburgerButton (from `../../HamburgerButton`)
+  - HamburgerMenu (from `../`)
+
+EXTERNAL SOURCES:
+  HamburgerButton:
+    :path: "../../HamburgerButton"
+  HamburgerMenu:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  HamburgerButton: 4d96058751422374d58543739669594c905e910e
+  HamburgerMenu: f66f16a176bbd6da71b33026cff1b141cac60b6f
+
+COCOAPODS: 0.39.0

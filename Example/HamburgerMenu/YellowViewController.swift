@@ -7,18 +7,16 @@
 //
 
 import UIKit
+import HamburgerMenu
 
-class ViewController: UIViewController {
+class YellowViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    @IBAction func exampleOneAction(sender: UIButton) {
+        
+        if let menuController = self.tabBarController as? HamburgerMenu.MenuController {
+            menuController.menu.toggle(true)
+        }
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }
 
