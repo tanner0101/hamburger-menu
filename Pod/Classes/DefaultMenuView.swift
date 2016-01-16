@@ -8,6 +8,7 @@
 
 import Foundation
 
+@available(iOS 9 , *)
 class DefaultMenuView: MenuView {
     
     override init(rootView: UIView, controller: MenuController) {

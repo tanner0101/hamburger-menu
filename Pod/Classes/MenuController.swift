@@ -41,7 +41,11 @@ public class MenuController: UITabBarController {
         
         //add the menu
         if self.menuNib == nil || self.menuNib == "" {
-            self.menu = DefaultMenuView(rootView: self.view, controller: self)
+            if #available(iOS 9, *) {
+                self.menu = DefaultMenuView(rootView: self.view, controller: self)
+            } else {
+                fatalError("Default Menu is only supported in iOS 9 or later. You must provide a custom menu nib")
+            }
         } else {
             guard let menu = UIView.instantiateFromNib(menuNib) as? MenuView else {
                 fatalError("Menu Nib '\(menuNib).xib' must exist and be a subclass of `HamburgerMenu`")
