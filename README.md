@@ -2,10 +2,6 @@
 
 ![How-To](https://raw.githubusercontent.com/tannernelson/hamburger-menu/master/hamburger-menu-howto.png)
 
-<center>
-	<img src="https://raw.githubusercontent.com/tannernelson/hamburger-menu/master/hamburger-menu-open-animation.gif" width="375">
-</center>
-
 
 [![CI Status](http://img.shields.io/travis/Tanner Nelson/HamburgerMenu.svg?style=flat)](https://travis-ci.org/Tanner Nelson/HamburgerMenu)
 [![Version](https://img.shields.io/cocoapods/v/HamburgerMenu.svg?style=flat)](http://cocoapods.org/pods/HamburgerMenu)
@@ -21,7 +17,12 @@ An Elegant UITabBarController Subclass
 - Quick installation
 - Easy customization
 - No changes to Storyboard layout required
-- Nice animations
+
+### Animations
+
+Hamburger Menu features spring animations and a menu button that transitions between opened and closed states.
+
+<img src="https://raw.githubusercontent.com/tannernelson/hamburger-menu/master/hamburger-menu-open-animation.gif" width="375">
 
 ## Setup
 
