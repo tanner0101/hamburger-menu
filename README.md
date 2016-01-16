@@ -1,9 +1,9 @@
-![Hamburger Menu](/Users/tanner/Developer/hamburger-menu/design/hamburger-menu-title.png)
+![Hamburger Menu](https://raw.githubusercontent.com/tannernelson/hamburger-menu/master/hamburger-menu-title.png)
 
-![How-To](/Users/tanner/Developer/hamburger-menu/design/hamburger-menu-howto.png)
+![How-To](https://raw.githubusercontent.com/tannernelson/hamburger-menu/master/hamburger-menu-howto.png)
 
 <center>
-	<img src="/Users/tanner/Developer/hamburger-menu/design/hamburger-menu-open-animation.gif" width="375">
+	<img src="https://raw.githubusercontent.com/tannernelson/hamburger-menu/master/hamburger-menu-open-animation.gif" width="375">
 </center>
 
 
