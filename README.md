@@ -88,6 +88,11 @@ You can also loop over `self.controller.tabBar.items` as is done in the default 
 
 Look at `DefaultMenuView.swift` in the Pod to see examples of this being done with a `UIStackView`.
 
+## Disclaimer
+
+Apple recommends against using hamburger menus in your UI because they can make your app harder to use. See `Designing Intuitive User Experiences - 211 WWDC 2014 session (at 31’ 57")` to learn more.
+
+This repo is for the special cases where a hamburger menu is the better solution or where finalized design files demand it (the latter being the reason it was made).
 
 ## Author
 
