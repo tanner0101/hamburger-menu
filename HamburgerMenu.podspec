@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "HamburgerMenu"
-  s.version          = "1.0.1"
+  s.version          = "1.0.2"
   s.summary          = "An Elegant UITabBarController Subclass."
   s.description      = "An Elegant UITabBarController Subclass that makes it easy to add a HamburgerMenu to your project."
 
