@@ -3,7 +3,6 @@ use_frameworks!
 
 target 'HamburgerMenu_Example', :exclusive => true do
   pod "HamburgerMenu", :path => "../"
-  pod "HamburgerButton", :path => "../../HamburgerButton"
 end
 
 target 'HamburgerMenu_Tests', :exclusive => true do
